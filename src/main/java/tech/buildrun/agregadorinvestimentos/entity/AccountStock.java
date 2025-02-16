@@ -25,42 +25,10 @@ public class AccountStock {
     public AccountStock() {
     }
 
-    public AccountStock(AccountStockId id, tech.buildrun.agregadorinvestimentos.entity.Account account, Stock stock, Integer quantity) {
+    public AccountStock(AccountStockId id, Account account, Stock stock, Integer quantity) {
         this.id = id;
         this.account = account;
         this.stock = stock;
-        this.quantity = quantity;
-    }
-
-    public AccountStockId getId() {
-        return id;
-    }
-
-    public void setId(AccountStockId id) {
-        this.id = id;
-    }
-
-    public tech.buildrun.agregadorinvestimentos.entity.Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(tech.buildrun.agregadorinvestimentos.entity.Account account) {
-        this.account = account;
-    }
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }
