@@ -2,6 +2,9 @@ package tech.buildrun.agregadorinvestimentos.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.buildrun.agregadorinvestimentos.controller.dto.CreateAccountDTO;
+import tech.buildrun.agregadorinvestimentos.controller.dto.CreateUserDTO;
+import tech.buildrun.agregadorinvestimentos.controller.dto.UpdateUserDTO;
 import tech.buildrun.agregadorinvestimentos.entity.User;
 import tech.buildrun.agregadorinvestimentos.service.UserService;
 
@@ -58,5 +61,13 @@ public class UserController {
        userService.deleteById(userId);
 
            return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity<User> createAccount(@PathVariable("userId") String userId,
+                                              @RequestBody CreateAccountDTO createAccountDTO){
+        userService.createAccount(userId, createAccountDTO);
+
+        return ResponseEntity.ok().build();
     }
 }

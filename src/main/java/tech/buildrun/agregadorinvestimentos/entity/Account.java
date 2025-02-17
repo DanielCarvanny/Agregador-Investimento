@@ -2,6 +2,7 @@ package tech.buildrun.agregadorinvestimentos.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,16 +21,22 @@ public class Account {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
     @PrimaryKeyJoinColumn
     private BillingAddress billingAddress;
+
+    @OneToMany(mappedBy = "account")
+    private List<AccountStock> accountStocks;
 
     public Account() {
     }
 
-    public Account(UUID accountId, String description) {
+    public Account(UUID accountId, User user, String description, BillingAddress billingAddress, List<AccountStock> accountStocks) {
         this.accountId = accountId;
+        this.user = user;
         this.description = description;
+        this.billingAddress = billingAddress;
+        this.accountStocks = accountStocks;
     }
 
     public UUID getAccountId() {
@@ -40,6 +47,14 @@ public class Account {
         this.accountId = accountId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -48,11 +63,19 @@ public class Account {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
+    public BillingAddress getBillingAddress() {
+        return billingAddress;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setBillingAddress(BillingAddress billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public List<AccountStock> getAccountStocks() {
+        return accountStocks;
+    }
+
+    public void setAccountStocks(List<AccountStock> accountStocks) {
+        this.accountStocks = accountStocks;
     }
 }
