@@ -9,7 +9,6 @@ public class Stock {
 
     @Id
     @Column(name = "stock_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String stockId;
 
     @Column(name = "description")
