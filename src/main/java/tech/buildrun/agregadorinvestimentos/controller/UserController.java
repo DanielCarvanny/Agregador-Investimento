@@ -2,10 +2,7 @@ package tech.buildrun.agregadorinvestimentos.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.buildrun.agregadorinvestimentos.controller.dto.AccountResponseDTO;
-import tech.buildrun.agregadorinvestimentos.controller.dto.CreateAccountDTO;
-import tech.buildrun.agregadorinvestimentos.controller.dto.CreateUserDTO;
-import tech.buildrun.agregadorinvestimentos.controller.dto.UpdateUserDTO;
+import tech.buildrun.agregadorinvestimentos.controller.dto.*;
 import tech.buildrun.agregadorinvestimentos.entity.User;
 import tech.buildrun.agregadorinvestimentos.service.UserService;
 
@@ -40,14 +37,14 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> listUsers(){
+    public ResponseEntity<List<UserResponseDTO>> getUsers() {
         var users = userService.listUsers();
-
         if (users.isEmpty()){
             return ResponseEntity.noContent().build();
         }else {
-            return ResponseEntity.ok(users);
+            return ResponseEntity.ok().body(users);
         }
+
     }
 
     @PutMapping("/{userId}")
