@@ -1,5 +1,7 @@
 package tech.buildrun.agregadorinvestimentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,8 +17,12 @@ public class Account {
     private UUID accountId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    @JsonBackReference
     private User user;
+
+
 
     @Column(name = "description")
     private String description;
