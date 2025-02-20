@@ -94,7 +94,7 @@ public class UserService {
         var id = UUID.fromString(userId);
 
         if (!userRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
         // Buscar todas as contas associadas ao usuário
