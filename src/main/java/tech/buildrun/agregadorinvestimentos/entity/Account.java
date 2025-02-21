@@ -22,8 +22,6 @@ public class Account {
     @JsonBackReference
     private User user;
 
-
-
     @Column(name = "description")
     private String description;
 

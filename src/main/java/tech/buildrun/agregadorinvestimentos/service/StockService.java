@@ -7,11 +7,12 @@ import tech.buildrun.agregadorinvestimentos.repository.StockRepository;
 
 @Service
 public class StockService {
+
     private StockRepository stockRepository;
 
     public StockService(StockRepository stockRepository) {
         this.stockRepository = stockRepository;
-    }
+     }
 
     public void createStock(CreateStockDTO createStockDTO) {
         //DTO -> ENTITY

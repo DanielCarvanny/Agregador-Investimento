@@ -26,6 +26,7 @@ public class AccountController {
         return ResponseEntity.ok().build();
     }
 
+    // Listagem de ações em uma conta
     @GetMapping("/{accountId}/stocks")
     public ResponseEntity<List<AccountStockResponseDTO>> listStock(@PathVariable("accountId") UUID accountId){
 
