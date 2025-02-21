@@ -15,7 +15,6 @@ import tech.buildrun.agregadorinvestimentos.repository.UserRepository;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -58,9 +57,10 @@ public class UserService {
     }
 
     // Busca de User pelo ID
-    public Optional<User> getUserbById(String userId){
+    public List<UserResponseDTO> getUserbById(String userId){
 
-        return userRepository.findById(UUID.fromString(userId));
+        return userRepository.findById(UUID.fromString(userId)).stream()
+                .map(UserResponseDTO :: new).collect(Collectors.toList());
     }
 
     // Listagem de Users

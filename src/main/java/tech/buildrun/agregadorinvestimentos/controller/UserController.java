@@ -24,18 +24,18 @@ public class UserController {
         var userId = userService.createUser(createUserDTO);
         return ResponseEntity.created(URI.create("/v1/users/" + userId.toString())).build();
     }
-
+    // Get pelo Id
     @GetMapping("/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable("userId") String userId){
+    public ResponseEntity<List<UserResponseDTO>> getUserById(@PathVariable("userId") String userId){
         var user = userService.getUserbById(userId);
 
-        if (user.isPresent()){
-            return ResponseEntity.ok(user.get());
+        if (user.isEmpty()){
+            return ResponseEntity.noContent().build();
         }else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok().body(user);
         }
     }
-
+    // All
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getUsers() {
         var users = userService.listUsers();
