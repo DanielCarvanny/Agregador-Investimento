@@ -8,7 +8,6 @@ Este projeto é uma API desenvolvida em Java para um Agregador de Investimentos.
 
 ## 🛠 **Ferramentas e Conceitos Utilizados**
 
-- **Spring Security 6**: Para garantir a segurança da API.
 - **Integração com MySQL via Docker**: Para gerenciar o banco de dados de forma isolada.
 - **Spring Cloud OpenFeign**: Para consumir APIs externas, como a API da Bolsa de Valores.
 - **JUnit e Mockito**: Para testes unitários.
